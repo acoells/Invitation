@@ -422,7 +422,6 @@ section {
   100% { transform: translateX(-50%); }
 }
 
-/* --- PERBAIKAN PADA GALLERY CENTER SECTION --- */
 .gallery-center-section { 
   background-color: var(--bg-primary); 
   padding: 25px 20px; 
@@ -1484,13 +1483,8 @@ function escapeHTML(str) {
   ) : '';
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-  if (SHEETDB_API_URL.includes("YOUR_API_ID")) {
-    commentsList.innerHTML = '<p style="font-size:12px; color:gray;">(Hubungkan API SheetDB untuk menampilkan komentar)</p>';
-  } else {
-    loadComments();
-  }
-});
+// Menghapus logika pengecekan template yang redundan
+window.addEventListener('DOMContentLoaded', loadComments);
 </script>
 </body>
 </html>
