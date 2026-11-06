@@ -422,16 +422,49 @@ section {
   100% { transform: translateX(-50%); }
 }
 
-.gallery-center-section { background-color: var(--bg-primary); padding: 20px; }
+/* --- PERBAIKAN PADA GALLERY CENTER SECTION --- */
+.gallery-center-section { 
+  background-color: var(--bg-primary); 
+  padding: 25px 20px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-bottom: var(--comic-border);
+  border-radius: var(--comic-sketch-radius);
+  margin-bottom: 5px;
+}
+
 .gallery-center-box {
   width: 100%;
+  max-width: 380px;
   border: var(--comic-border);
   border-radius: var(--comic-sketch-radius-alt);
   overflow: hidden;
   box-shadow: var(--comic-shadow);
   margin: 0 auto;
+  background-color: var(--bg-secondary);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.gallery-center-box img { width: 100%; height: auto; display: block; object-fit: cover; }
+
+.gallery-center-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 6px 6px 0px var(--border-color);
+}
+
+.gallery-center-box img { 
+  width: 100%; 
+  height: auto; 
+  display: block; 
+  object-fit: cover; 
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.gallery-center-box img:hover {
+  transform: scale(1.02);
+}
 
 .map-image-wrapper {
   width: 100%;
@@ -957,9 +990,10 @@ footer {
     </div>
   </section>
 
+  <!-- Gallery Center Section -->
   <section class="gallery-center-section">
     <div class="gallery-center-box">
-      <img src="Media/Images/Countdown.webp" alt="Gallery Center">
+      <img src="Media/Images/Countdown.webp" alt="Gallery Center" id="gallery-center-img">
     </div>
   </section>
 
@@ -996,7 +1030,7 @@ footer {
         <button class="btn-action" onclick="copyText('account-1')"><i class="fa-solid fa-copy"></i> Salin Rekening</button>
       </div>
 
-      <!-- Rekening 2 (Berjarak dari tombol pertama dan tanpa div kosong) -->
+      <!-- Rekening 2 -->
       <div class="account-item-wrapper">
         <div class="bank-name">
           <i class="fa-solid fa-building-columns bca-logo-icon"></i> BANK BCA
@@ -1196,6 +1230,13 @@ window.addEventListener('DOMContentLoaded', () => {
   const mapImg = document.getElementById('location-map-img');
   if (mapImg) {
     mapImg.addEventListener('click', function() {
+      openSingleFullscreenImage(this.src);
+    });
+  }
+
+  const centerImg = document.getElementById('gallery-center-img');
+  if (centerImg) {
+    centerImg.addEventListener('click', function() {
       openSingleFullscreenImage(this.src);
     });
   }
